@@ -317,7 +317,7 @@
                         <div class="form-group form-inline">
                             总共${pageInfo.pages}页，共${pageInfo.total}条数据。每页
                             <select id="changePageSize" onchange="changePageSize()" class="form-control" value="${pageSize}">
-								<c:forEach begin="1" end="5" var="num" varStatus="status">
+								<c:forEach begin="1" end="5" var="num">
 									<option <c:if test="${num eq pageSize}">selected</c:if> >${num}</option>
 								</c:forEach>
                             </select> 条
