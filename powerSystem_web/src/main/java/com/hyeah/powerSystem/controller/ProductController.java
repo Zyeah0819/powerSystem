@@ -17,6 +17,28 @@ public class ProductController {
     @Autowired
     private IProductService productService;
 
+
+
+    @RequestMapping("addProduct.do")
+    public String addProduct(Product product) throws Exception{
+        productService.addProduct(product);
+        return "redirect:findAll.do";
+    }
+
+    /**
+     * 跳转到添加页面
+     * @return
+     */
+    @RequestMapping("toAddProduct.do")
+    public String toAddProduct(){
+        return "product-add";
+    }
+
+    /**
+     * 查询所有的产品数据
+     * @return
+     * @throws Exception
+     */
     @RequestMapping("/findAll.do")
     public ModelAndView findAll() throws Exception{
         ModelAndView mv = new ModelAndView();

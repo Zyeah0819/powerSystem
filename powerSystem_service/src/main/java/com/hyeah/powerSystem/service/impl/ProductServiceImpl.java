@@ -13,6 +13,12 @@ import java.util.List;
 public class ProductServiceImpl implements IProductService {
     @Autowired
     private IProductDao productDao;
+
+    @Override
+    public void addProduct(Product product) throws Exception {
+        productDao.addProduct(product);
+    }
+
     @Override
     public List<Product> findAll() throws Exception {
         return productDao.findAll();
