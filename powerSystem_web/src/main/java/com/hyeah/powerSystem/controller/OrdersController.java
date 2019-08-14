@@ -18,6 +18,16 @@ public class OrdersController {
     @Autowired
     private IOrdersService ordersService;
 
+    //根据id查orders
+    @RequestMapping("/findById.do")
+    public ModelAndView findById(@RequestParam(name = "id",required = true) Integer id) throws Exception {
+        ModelAndView mv = new ModelAndView();
+        Orders orders = ordersService.findByid(id);
+        mv.addObject("orders",orders);
+        mv.setViewName("orders-show");
+        return mv;
+    }
+
 /*    //查询所有订单，未分页
     @RequestMapping("/findAll.do")
     public ModelAndView findAll() throws Exception{
@@ -38,4 +48,7 @@ public class OrdersController {
         mv.setViewName("orders-page-list");
         return mv;
     }
+
+
+
 }

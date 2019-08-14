@@ -4,7 +4,7 @@ import com.hyeah.powerSystem.utils.DateUtils;
 
 import java.util.Date;
 import java.util.List;
-
+//订单
 public class Orders {
     private Integer id;
     private String orderNum;
@@ -19,6 +19,25 @@ public class Orders {
     private Integer payType;
     private String payTypeStr;
     private String orderDesc;
+
+    @Override
+    public String toString() {
+        return "Orders{" +
+                "id=" + id +
+                ", orderNum='" + orderNum + '\'' +
+                ", orderTime=" + orderTime +
+                ", orderTimeStr='" + orderTimeStr + '\'' +
+                ", orderStatus=" + orderStatus +
+                ", orderStatusStr='" + orderStatusStr + '\'' +
+                ", peopleCount=" + peopleCount +
+                ", product=" + product +
+                ", travellers=" + travellers +
+                ", member=" + member +
+                ", payType=" + payType +
+                ", payTypeStr='" + payTypeStr + '\'' +
+                ", orderDesc='" + orderDesc + '\'' +
+                '}';
+    }
 
     public Integer getId() {
         return id;

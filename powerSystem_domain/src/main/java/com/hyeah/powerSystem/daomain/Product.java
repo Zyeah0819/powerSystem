@@ -4,7 +4,7 @@ import com.hyeah.powerSystem.utils.DateUtils;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
-
+//产品
 public class Product {
     private Integer id; // 主键
     private String productNum; // 编号 唯一

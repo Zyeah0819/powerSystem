@@ -19,4 +19,5 @@ public class DateUtils {
         Date parse = sdf.parse(str);
         return parse;
     }
+
 }

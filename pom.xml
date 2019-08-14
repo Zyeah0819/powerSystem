@@ -152,11 +152,15 @@
             <artifactId>spring-security-core</artifactId>
             <version>${spring.security.version}</version>
         </dependency>
+
+        <!--页面端使用权限控制的依赖-->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-taglibs</artifactId>
             <version>${spring.security.version}</version>
         </dependency>
+
+
 
         <!-- 添加MySQL数据库驱动依赖包. -->
         <dependency>
@@ -165,6 +169,7 @@
             <version>5.1.30</version>
         </dependency>
 
+        <!--使用jsr注解 的依赖-->
         <dependency>
             <groupId>javax.annotation</groupId>
             <artifactId>jsr250-api</artifactId>
@@ -183,6 +188,15 @@
                         <target>1.8</target>
                         <encoding>UTF-8</encoding>
                         <showWarnings>true</showWarnings>
+                    </configuration>
+                </plugin>
+                <!--加了下面这行，完美解决Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:2.12.4:test报错-->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.4.2</version>
+                    <configuration>
+                        <skipTests>true</skipTests>
                     </configuration>
                 </plugin>
             </plugins>

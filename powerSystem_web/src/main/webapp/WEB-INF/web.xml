@@ -7,7 +7,7 @@
     <!-- 配置加载类路径的配置文件 -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath*:applicationContext.xml</param-value>
+        <param-value>classpath*:applicationContext.xml,classpath*:spring-security.xml</param-value>
     </context-param>
 
     <!-- 配置监听器 -->
@@ -46,12 +46,30 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
+    <!--springSecurity所需要的-->
+    <filter>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!--配置出现显示页面，变得更友好-->
+    <error-page>
+        <error-code>403</error-code>
+        <location>/403.jsp</location>
+    </error-page>
+    
+    <!--是这个导致一开始会有一个权限出错-->
     <welcome-file-list>
-        <welcome-file>index.html</welcome-file>
+        <welcome-file>login.jsp</welcome-file>
+<!--        <welcome-file>index.html</welcome-file>
         <welcome-file>index.htm</welcome-file>
         <welcome-file>index.jsp</welcome-file>
         <welcome-file>default.html</welcome-file>
         <welcome-file>default.htm</welcome-file>
-        <welcome-file>default.jsp</welcome-file>
+        <welcome-file>default.jsp</welcome-file>-->
     </welcome-file-list>
 </web-app>
