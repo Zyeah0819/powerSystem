@@ -144,6 +144,7 @@
 
 			<h1>1.基础数据中订单管理有分页(其他学的时候没有添加)</h1>
 			<h1>2.权限限制也有</h1>
+			<h1>3.操作日志进行记录，存入数据库（AOP）</h1>
 			<img src="${pageContext.request.contextPath}/img/center.jpg"
 				width="100%" height="100%" />
 		</div>
