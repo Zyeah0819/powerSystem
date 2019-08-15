@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
+import java.net.URL;
 import java.util.Date;
 @Component
 @Aspect
@@ -34,7 +35,9 @@ public class LogAop {
     public void doBefore(JoinPoint jp) throws NoSuchMethodException {
         visitTime = new Date();//当前时间就是开始访问的时间
         clazz = jp.getTarget().getClass(); //具体要访问的类
+        System.out.println("类名为："+clazz);//类名为：class com.hyeah.powerSystem.controller.RoleController
         String methodName = jp.getSignature().getName(); //获取访问的方法的名称
+        System.out.println("方法名为："+methodName);//方法名为：findAll
         Object[] args = jp.getArgs();//获取访问的方法的参数
 
         //获取具体执行的方法的Method对象
@@ -56,10 +59,10 @@ public class LogAop {
 
         String url = "";
         //获取url
-        if (clazz != null && method != null && clazz != LogAop.class) {
+        if (clazz != null && method != null && clazz != LogAop.class && clazz !=SysLogController.class) {
             //1.获取类上的@RequestMapping("/orders")
             RequestMapping classAnnotation = (RequestMapping) clazz.getAnnotation(RequestMapping.class);
-            if (classAnnotation != null) {
+            if (classAnnotation != null ) {
                 String[] classValue = classAnnotation.value();
                 //2.获取方法上的@RequestMapping(xxx)
                 RequestMapping methodAnnotation = method.getAnnotation(RequestMapping.class);
@@ -75,6 +78,7 @@ public class LogAop {
                     User user = (User) context.getAuthentication().getPrincipal();
                     String username = user.getUsername();
 
+
                     //将日志相关信息封装到SysLog对象
                     SysLog sysLog = new SysLog();
                     sysLog.setExecutionTime(time); //执行时长
@@ -83,9 +87,11 @@ public class LogAop {
                     sysLog.setUrl(url);
                     sysLog.setUsername(username);
                     sysLog.setVisitTime(visitTime);
-
                     //调用Service完成操作
                     sysLogService.save(sysLog);
+
+
+
                 }
             }
         }

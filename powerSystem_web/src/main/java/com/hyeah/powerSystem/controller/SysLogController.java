@@ -15,7 +15,7 @@ public class SysLogController {
     @Autowired
     private ISysLogService sysLogService;
 
-    @RequestMapping("findAll.do")
+    @RequestMapping("/findAll.do")
     public ModelAndView findAll() throws Exception {
         ModelAndView mv = new ModelAndView();
         List<SysLog> sysLogList = sysLogService.findAll();

@@ -52,7 +52,7 @@ public class UsersController {
 
     //跳转添加页面
     @RequestMapping("toAdd.do")
-    private String toAdd(){
+    public String toAdd(){
         return "user-add";
     }
 

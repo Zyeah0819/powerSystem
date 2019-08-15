@@ -43,13 +43,13 @@ public class RoleController {
     }
     //跳转添加页面
     @RequestMapping("toAdd.do")
-    private String toAdd(){
+    public String toAdd(){
         return "role-add";
     }
 
     //添加角色
     @RequestMapping("/add.do")
-    private String add(Role role) throws Exception {
+    public String add(Role role) throws Exception {
         roleService.add(role);
         return "redirect:findAll.do";
     }
