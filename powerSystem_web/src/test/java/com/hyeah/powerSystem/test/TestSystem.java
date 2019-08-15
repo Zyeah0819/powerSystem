@@ -2,12 +2,11 @@ package com.hyeah.powerSystem.test;
 
 import com.hyeah.powerSystem.dao.IMemberDao;
 import com.hyeah.powerSystem.dao.ITraverllerDao;
-import com.hyeah.powerSystem.daomain.Member;
-import com.hyeah.powerSystem.daomain.Orders;
-import com.hyeah.powerSystem.daomain.Traveller;
-import com.hyeah.powerSystem.daomain.Users;
+import com.hyeah.powerSystem.daomain.*;
 import com.hyeah.powerSystem.service.IOrdersService;
+import com.hyeah.powerSystem.service.ISysLogService;
 import com.hyeah.powerSystem.service.IUserService;
+import org.aspectj.lang.annotation.Aspect;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +26,8 @@ public class TestSystem {
     private ITraverllerDao traverllerDao;
     @Autowired
     private IUserService userService;
+    @Autowired
+    private ISysLogService sysLogServices;
     @Test
     public void test() throws Exception {
 
@@ -35,5 +36,7 @@ public class TestSystem {
         List<Traveller> travellerList = traverllerDao.findByOrdersId(1);
         List<Users> usersList = userService.findAll();
         System.out.println("数据："+usersList);*/
+        List<SysLog> logList=sysLogServices.findAll();
+        System.out.println(logList);
     }
 }
